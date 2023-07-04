@@ -1,0 +1,86 @@
+'use client';
+
+
+import Cookies from "js-cookie";
+import React, {useState, useContext, createContext} from "react";
+// let JWT_SECRECT_KEY = "ramalakshmanjanakijayabolohanumanki";
+
+export const UserContext = createContext();
+
+export const UserProvider = ({children}) => {
+        const baseURL = process.env.NEXT_PUBLIC_API;
+    let [userId, setUserId]  = useState(Cookies.get('userSession') ? Cookies.get('userSession') : null);
+    let [currentUser, setCurrentUser]  = useState([]);
+
+    const registerUser = async (userDetail) => {
+
+            const fetchReq = await fetch(`${baseURL}/api/createUser`, {
+                    method: 'POST',
+                    headers: {
+                            'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userDetail)
+            })
+            const result = await fetchReq.json();
+            if(result) return result;
+    }
+
+    const loginUser = async (userDetail) => {
+
+        const fetchReq = await fetch(`${baseURL}/api/login`, {
+                method: 'POST',
+                headers: {
+                        'Content-type': 'application/json'
+                },
+                body: JSON.stringify(userDetail)
+        })
+        const result = await fetchReq.json();
+        if(result.error) return result;
+        const jwt = (await import('jsonwebtoken')).default;
+        const decodedToken = jwt.decode(result.token);
+        Cookies.set('userSession', decodedToken.id);
+        setUserId(decodedToken.id);
+        //Sending this as boolean to make sure user has selected a avatar
+        return result;
+    }
+
+    const uploadAvatar = async (img) => {
+                        //Have to fix this...
+        const uploadReq = await fetch(`${baseURL}/api/selectAvatar`, {
+                    method: 'POST',
+                    headers: {
+                            'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({userId: userId, selectedImage: img})
+        })
+        if(uploadReq.error) return uploadReq.error;
+        return uploadReq.success;
+
+}
+
+ const currentUserDetail = async () => {
+            if(userId){
+                const getDetails = await fetch(`${baseURL}/api/userDetails?id=${userId}`, {cache: 'no-store'});
+                const data = await getDetails.json();
+                setCurrentUser(data.userDetail[0]);
+                return data.userDetail;
+            }else{
+
+                    return {'Error': 'You cannot access this function.'};
+            }
+                
+    }
+
+
+        return (
+            <UserContext.Provider value={{currentUserDetail, userId,registerUser,loginUser, uploadAvatar, currentUser}}>
+
+                {children}
+            </UserContext.Provider>
+            
+        );
+}
+
+export const useUserContext = () =>{
+    return useContext(UserContext)
+}
