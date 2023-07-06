@@ -30,12 +30,14 @@ function Graph() {
      useEffect(() => {
 
       getIncomes();
-       getExpenses();
-      
-        }, []) // eslint-disable-next-line react-hooks/exhaustive-deps
+      getExpenses();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+
+        }, [])
  
      useEffect(() => {
       mnthExpenses();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
 
   }, [expenses.length])
 

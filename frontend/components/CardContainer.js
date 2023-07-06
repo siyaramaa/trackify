@@ -19,10 +19,9 @@ function CardContainer({income}) {
 
   
   useEffect(() => {
-
-      income? getIncomes() : getExpenses();
-      
-}, [])   // eslint-disable-next-line react-hooks/exhaustive-deps
+    income? getIncomes() : getExpenses();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])   
 
 
 
@@ -50,7 +49,7 @@ function CardContainer({income}) {
                       expenses?.map((i) => 
                        
                               (
-                                <Card income={income} id={i._id} title={i.title} amount={i.amount} category={i.category} createdAt={i.createdAt} />
+                                <Card key={i._id} income={income} id={i._id} title={i.title} amount={i.amount} category={i.category} createdAt={i.createdAt} />
 
                       )
                       
