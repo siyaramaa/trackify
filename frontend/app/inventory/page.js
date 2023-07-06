@@ -1,6 +1,3 @@
-// import UserGreet from "@/components/userGreet";
-// import Graph from "@/components/graph";
-// import Recent from "@/components/Recent";
 import dynamic from "next/dynamic";
 
 const UserGreet = dynamic(() => import('@/components/userGreet'), {

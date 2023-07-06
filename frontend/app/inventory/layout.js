@@ -10,10 +10,6 @@ const Dashboard = dynamic(() => import('@/components/dashboard'), {
 
 const ProgressBar = dynamic(() => import('next-nprogress-bar'));
 
-export const metadata = {
-  title: 'Shree Sita Rama',
-  description: 'Jay Siya Rama',
-}
 
 export default function RootLayout({ children }) {
 
