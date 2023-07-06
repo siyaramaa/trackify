@@ -59,7 +59,7 @@ transition={{duration: 0.2}}
 <h1 className="font-medium text-sm text-gray-400">{createdAt.slice(0,10)}</h1>
 </div>
 
-<button onClick={() => delHandler(i._id)} className="hover:text-red-500  group h-full p-2" >
+<button onClick={() => delHandler(id)} className="hover:text-red-500  group h-full p-2" >
 <DeleteOutlineIcon className="text-3xl lg:text-4xl" />
 <span className="absolute  hidden group-hover:block bg-gray-900 rounded p-1 opacity-40 text-white">Delete</span>
 </button>
