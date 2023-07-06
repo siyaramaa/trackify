@@ -19,7 +19,7 @@ dynamic(() => import("react-toastify/dist/ReactToastify.css"));
 
 
 //Page to set avatar for the user account.
-function page() {
+function SetAvatar() {
   //Using UserContext
   const UserContext = useUserContext();
 
@@ -116,4 +116,4 @@ function page() {
   );
 }
 
-export default page;
+export default SetAvatar;

@@ -10,7 +10,7 @@ dynamic(() =>  import("react-toastify/dist/ReactToastify.css"));
 const Link = dynamic(() =>  import('next/link'));
 const Image = dynamic(() => import('next/image'))
 
-function page() {
+function Sigin() {
 
 
   //Using Global Context.
@@ -132,4 +132,4 @@ function page() {
   </div>  )
 }
 
-export default page
+export default Sigin

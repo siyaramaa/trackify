@@ -11,7 +11,7 @@ const Image = dynamic(() => import('next/image'))
 dynamic(() =>  import("react-toastify/dist/ReactToastify.css"));
 import { toast, ToastContainer } from 'react-toastify';
 
-function page() {
+function Sigup() {
 
   //Using Global Context.
   const UserContext = useUserContext();
@@ -142,4 +142,4 @@ function page() {
   </div>  )
 }
 
-export default page
+export default Sigup
