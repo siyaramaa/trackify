@@ -1,13 +1,11 @@
 import React from 'react'
 import { ToastContainer, toast } from "react-toastify";
-import { motion } from "framer-motion";
 import { useGlobalContext } from '@/context/GlobalContext';
 import dynamic from 'next/dynamic';
 
 const CurrencyRupeeIcon = dynamic(() => import('@mui/icons-material/CurrencyRupee'));
 const MoneyOffIcon = dynamic(() => import('@mui/icons-material/MoneyOff'));
 const DeleteOutlineIcon = dynamic(() => import('@mui/icons-material/DeleteOutline'));
-dynamic(() => import('react-toastify/dist/ReactToastify.css'));
 
 
 
@@ -36,12 +34,12 @@ draggable
 pauseOnHover
 theme="light"
 />
- <motion.div
+ {/* <motion.div
  initial={{ opacity: 0 , x: '-15%'}}
  animate={{ x: "0%", opacity: 1 }}
 whileInView={{opacity: 1  }}
 transition={{duration: 0.2}}
- >
+ > */}
 
  <div className="bg-white h-24  flex items-center  justify-around lg:p-4 rounded-lg">
 {
@@ -65,7 +63,7 @@ transition={{duration: 0.2}}
 </button>
 
 </div>
-   </motion.div>
+   {/* </motion.div> */}
    
 </div>
   )

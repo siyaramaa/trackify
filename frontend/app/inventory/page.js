@@ -1,13 +1,12 @@
 import dynamic from "next/dynamic";
+import Graph from '@/components/graph';
+import Recent from '@/components/Recent';
 
 const UserGreet = dynamic(() => import('@/components/userGreet'), {
         ssr: false,
-      loading: () => <p>Siya ramaa...</p>
+      loading: () =>  <div className="animate-pulse h-4 w-2/12 rounded-md bg-gray-300 "></div>
+
 });
-
-const Graph = dynamic(() => import('@/components/graph'));
-const Recent = dynamic(() => import('@/components/Recent'));
-
 //Index page of /inventory or home page.
 export default function Home() {
 

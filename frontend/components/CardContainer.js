@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { useGlobalContext } from "@/context/GlobalContext";
+dynamic(() => import('react-toastify/dist/ReactToastify.css'));
 // import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 import dynamic from "next/dynamic";
 
@@ -8,7 +9,13 @@ const CloudUploadOutlinedIcon = dynamic(() => import('@mui/icons-material/CloudU
 
 const Card = dynamic(() => import('./Card'), {
         ssr: false,
-        loading: () => <div className="bg-slate-100 h-24  flex items-center  justify-around lg:p-4 rounded-lg animate-pulse" />
+        loading: () => <div className="bg-slate-100 h-24 animate-pulse flex-row items-center justify-center space-x-1 rounded-xl border p-6 ">
+            <div className="flex flex-col space-y-2">
+              <div className="h-6 w-11/12 rounded-md bg-gray-300 "></div>
+              <div className="h-6 w-10/12 rounded-md bg-gray-300 "></div>
+            </div>
+              </div>
+        
 })
 
 
