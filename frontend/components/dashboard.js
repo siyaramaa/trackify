@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 
 
@@ -42,7 +42,21 @@ const Settings = dynamic(() => import('@mui/icons-material/Settings'),{
 function Dashboard() {
   
     const UserContext = useUserContext();
-    const {currentUser} = UserContext;
+    const {currentUserDetail} = UserContext;
+    const [currentUser, setCurrentUser] = useState();
+
+    useEffect(() => {
+        const fetchReq = async () => {
+          const resp = await currentUserDetail();
+          setCurrentUser(resp[0]);
+        }
+        fetchReq();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+    console.log(currentUser);
+
+
   
   const router = useRouter();
   const logoutHandler = () => {
