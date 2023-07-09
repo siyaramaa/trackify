@@ -2,28 +2,47 @@ import dynamic from 'next/dynamic';
 import React from 'react';
 
 
-
 const Total = dynamic(() => import('@/components/total'),{
   ssr: false,
-  loading: () => <div className="bg-slate-200 h-16 w-full flex items-center justify-center p-4 rounded-lg sticky top-0 z-10 animate-pulse" />
-
-
+  loading: () => <div className="bg-slate-100 h-16 w-full animate-pulse flex-row items-center justify-center space-x-1 rounded-xl border p-6">
+        <div className="mx-auto h-6 w-4/12 rounded-md bg-gray-300 " />
+        </div>
 });
 
 const CardContainer = dynamic(() => import('@/components/CardContainer'),{
   ssr: false,
-  loading: () => (<div className="cardsContainer animate-pulse order-1 lg:order-2  w-[85vw] md:w-[80vw] lg:w-[50vw] border bg-gray-100 rounded p-5 space-y-5 h-[45vh] lg:h-[80vh] overflow-y-scroll overflow-x-hidden">
-        <div className="bg-slate-100 h-24  flex items-center  justify-around lg:p-4 rounded-lg animate-pulse" />
-  </div>)
+  loading: () => <div className="bg-slate-100 order-1 lg:order-2 animate-pulse w-[85vw] md:w-[80vw] flex-row items-center justify-center space-x-1 rounded-xl border p-6  lg:w-[50vw] h-[45vh] lg:h-[80vh] overflow-x-hidden">
+                             <div className="flex flex-col space-y-5">
 
+                  <div className="h-6 w-11/12 rounded-md bg-gray-300 "></div>
+                  <div className="h-6 w-11/12 rounded-md bg-gray-300 "></div>
+                  <div className="h-6 w-5/12 rounded-md bg-gray-300 "></div>
+                  <div className="h-6 w-5/12 rounded-md bg-gray-300 "></div>
+                  <div className="h-6 w-5/12 rounded-md bg-gray-300 "></div>
+                  <div className="h-6 w-4/12 rounded-md bg-gray-300 "></div>
+                  <div className="h-6 w-3/12 rounded-md bg-gray-300 "></div>
+                  <div className="h-6 w-2/12 rounded-md bg-gray-300 "></div>
+                  </div>
+
+    </div>
 
 })
 
 const AddComp = dynamic(() => import('@/components/addComp'), {
   ssr: false,
-  loading: () => <div className="bg-slate-200 animate-pulse flex items-center h-[55vh] lg:h-[80vh] w-[85vw] lg:w-[30vw] flex-col mx-auto rounded space-y-6 lg:space-y-10 p-5 inputContainer" />
+  loading: () => <div className="bg-slate-100 h-[55vh] lg:h-[80vh] w-[85vw] lg:w-[30vw] animate-pulse flex-row items-center justify-center space-x-1 rounded-xl border p-6 ">
+      <div className="flex flex-col space-y-5">
+        <div className="h-6 w-11/12 rounded-md bg-gray-300 "></div>
+        <div className="h-6 w-10/12 rounded-md bg-gray-300 "></div>
+        <div className="h-6 w-9/12 rounded-md bg-gray-300 "></div>
+        <div className="h-6 w-11/12 rounded-md bg-gray-300 "></div>
+        <div className="h-6 w-6/12 rounded-md bg-gray-300 "></div>
+
+      </div>
+        </div>
 
 })
+
 
 
 //This page contains informations related to expenses.

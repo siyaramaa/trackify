@@ -1,11 +1,12 @@
 "use client";
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 
 
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { useUserContext } from "@/context/UserContext";
+import {useGlobalContext} from "@/context/GlobalContext"
 import dynamic from "next/dynamic";
 
 const Link = dynamic(() => import('next/link'));
@@ -42,13 +43,34 @@ const Settings = dynamic(() => import('@mui/icons-material/Settings'),{
 function Dashboard() {
   
     const UserContext = useUserContext();
-    const {currentUser} = UserContext;
+    const GlobalContext = useGlobalContext();
+    const {currentUserDetail} = UserContext;
+    const {getIncomes,getExpenses, incomes, expenses} = GlobalContext;
+    let totalInc = 0;
+    let totalExp = 0;
+    const [currentUser, setCurrentUser] = useState();
+    useEffect(() => {
+      getIncomes();
+      getExpenses();
+      const fetchReq = async () => {
+        const resp = await currentUserDetail();
+        setCurrentUser(resp[0]);
+        
+      }
+      fetchReq();      
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
+    incomes?.forEach((i) => totalInc += i.amount );
+    expenses?.forEach((i) => totalExp += i.amount );   
+
   
   const router = useRouter();
   const logoutHandler = () => {
 
       Cookies.remove('userSession');
       router.push('/auth/signin');
+      router.refresh();
   }
   
   
@@ -57,15 +79,18 @@ function Dashboard() {
     <div className="flex flex-col p-4 w-[13vw] md:w-28 items-center  xl:w-44 h-screen rounded-r-lg bg-teal-200  z-20 space-y-20 xl:space-y-2 transition-all ease-in-out delay-75 fixed top-0 left-0">
             
       <div className="userInformation space-y-4 xl:p-4 xl:bg-white rounded-xl h-14 w-16 xl:h-48 xl:w-40">
-      
-                 <Image loading="lazy" width={150} height={150} className={`nextImg w-[57px] h-[57px] md:w-[65px] md:h-[65px] xl:w-[85px] xl:h-[85px] mx-auto rounded-full object-cover bg-white`} alt="userIntial" src={currentUser?.profilePicture || '/image/defaultAvatar.png'} />
+
+              {
+                    currentUser?.profilePicture &&
+                <Image width={150} height={150} className={`nextImg w-[57px] h-[57px] md:w-[65px] md:h-[65px] xl:w-[85px] xl:h-[85px] mx-auto rounded-full object-cover bg-white`} alt="userIntial" src={currentUser?.profilePicture.includes('data:image/') ? currentUser?.profilePicture : `/image/${currentUser?.profilePicture}` } />
+              }
         
     
             
         <div className="details text-center hidden xl:block">
           <h1 className="font-semibold text-xl">{currentUser?.username}</h1>
-          <p className="text-gray-500">
-            Balance: <i className="text-slate-900">5000</i>
+          <p className="text-gray-500 text-sm">
+            Balance: <i className={`text-${totalInc-totalExp < 0 ? 'red-500' : 'green-500'}`}>{totalInc-totalExp}</i>
           </p>
         </div>
       </div>

@@ -6,15 +6,16 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
+
+
 import { useUserContext } from '@/context/UserContext';
-// const useUserContext = dynamic(() => import('@/context/UserContext'));
 const Badge = dynamic(() => import('@mui/material/Badge'));
 const Stack = dynamic(() => import('@mui/material/Stack'));
 const Image = dynamic(() => import('next/image'), {
       ssr: false,
       loading: () => <div className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100 animate-pulse bg-slate-600" />
 });
-dynamic(() => import("react-toastify/dist/ReactToastify.css"));
+dynamic(() => import('react-toastify/dist/ReactToastify.min.css'));
 
 
 
@@ -86,7 +87,12 @@ function SetAvatar() {
           vertical: 'bottom',
     horizontal: 'right',
   }}>
-                 <Image loading="lazy" width={150} height={150} className={`nextImg w-[95px] h-[95px] mx-auto rounded-full object-cover bg-white`} alt="Avatar" src={!avatar ? '/image/defaultAvatar.png' : avatar} />
+                  {
+                      !avatar ? <Image loading="lazy" width={150} height={150} className={`nextImg w-[95px] h-[95px] mx-auto rounded-full object-cover bg-white`} alt="Avatar" src={'/image/defaultAvatar.png'} />:
+                      <Image loading="lazy" width={150} height={150} className={`nextImg w-[95px] h-[95px] mx-auto rounded-full object-cover bg-white`} alt="Avatar" src={avatar?.includes('data:image/') ? avatar : `/image/${avatar}` } />
+
+
+                  }
 
      
         </Badge>
@@ -98,14 +104,14 @@ function SetAvatar() {
                     Select your avatar
           </h2>
              <Stack direction="row" spacing={2} className="flex items-center justify-center">
-                <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.src)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="Remy Sharp" src="/image/stylish_boy.avif" />
-                <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.src)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="Travis Howard" src="/image/Yellow_jacket_boy.avif" />
-               <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.src)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="Cindy Baker" src="/image/Yellow_jacket_girl.avif" />
-               <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.src)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="Shree Rama"  src={'/image/sitarama.avif'} />             
+                <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.alt)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="stylish_boy.avif" src="/image/stylish_boy.avif" />
+                <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.alt)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="Yellow_jacket_boy.avif" src="/image/Yellow_jacket_boy.avif" />
+               <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.alt)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="Yellow_jacket_girl.avif" src="/image/Yellow_jacket_girl.avif" />
+               <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.alt)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="sitarama.avif"  src={'/image/sitarama.avif'} />             
              </Stack>
              <Stack direction="row" spacing={2} className="flex items-center justify-center">
-             <Image loading="lazy" onClick={(e) => setAvatar(e.target.src)} width={150} height={150} className="w-[75px] h-[75px] rounded-full cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="Shree Krishna" src="/image/krishna.avif" />
-             <Image onClick={(e) => setAvatar(e.target.src)} loading="lazy" width={150} height={150} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100 bg-white" alt="defaultAvatar" src='/image/defaultAvatar.png' />
+             <Image loading="lazy" onClick={(e) => setAvatar(e.target.alt)} width={150} height={150} className="w-[75px] h-[75px] rounded-full cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="krishna.avif" src="/image/krishna.avif" />
+             <Image onClick={(e) => setAvatar(e.target.alt)} loading="lazy" width={150} height={150} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100 bg-white" alt="defaultAvatar.png" src='/image/defaultAvatar.png' />
               
               </Stack>
         </div>
@@ -117,3 +123,4 @@ function SetAvatar() {
 }
 
 export default SetAvatar;
+

@@ -3,14 +3,12 @@
 
 import Cookies from "js-cookie";
 import React, {useState, useContext, createContext} from "react";
-// let JWT_SECRECT_KEY = "ramalakshmanjanakijayabolohanumanki";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({children}) => {
         const baseURL = process.env.NEXT_PUBLIC_API;
     let [userId, setUserId]  = useState(Cookies.get('userSession') ? Cookies.get('userSession') : null);
-    let [currentUser, setCurrentUser]  = useState([]);
 
     const registerUser = async (userDetail) => {
 
@@ -62,7 +60,6 @@ export const UserProvider = ({children}) => {
             if(userId){
                 const getDetails = await fetch(`${baseURL}/api/userDetails?id=${userId}`, {cache: 'no-store'});
                 const data = await getDetails.json();
-                setCurrentUser(data.userDetail[0]);
                 return data.userDetail;
             }else{
 
@@ -73,7 +70,7 @@ export const UserProvider = ({children}) => {
 
 
         return (
-            <UserContext.Provider value={{currentUserDetail, userId,registerUser,loginUser, uploadAvatar, currentUser}}>
+            <UserContext.Provider value={{currentUserDetail, userId,registerUser,loginUser, uploadAvatar}}>
 
                 {children}
             </UserContext.Provider>

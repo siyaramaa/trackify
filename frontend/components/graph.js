@@ -5,13 +5,27 @@ import dynamic from 'next/dynamic';
 
 const InExpCard = dynamic(() => import('./inExpCard'),{
       ssr: false,
-      loading: () => <div className='bg-slate-200 h-28 w-[40vw] xl:h-32 xl:w-[20vw] font-bold text-base  lg:text-2xl flex flex-col items-center justify-around rounded-lg animate-pulse' />
+      loading: () => <div className="bg-slate-100 h-28 w-[40vw] xl:h-32 xl:w-[20vw] animate-pulse flex-row items-center justify-center space-x-1 rounded-xl border p-6">
+      <div className="flex flex-col space-y-5">
+<div className="h-6 w-11/12 rounded-md bg-gray-300 "></div>
+<div className="h-6 w-9/12 rounded-md bg-gray-300 "></div>
+</div>
+</div>
 
 });
 const ChartComponent = dynamic(() => import('./ChartComponent'),
         {
           ssr: false,
-          loading: () => <div className='graphContainer h-[45vh] w-full rounded-xl  bg-slate-200 animate-pulse' />
+          loading: () => <div className="bg-slate-100 h-[45vh] w-full animate-pulse flex-row items-center justify-center space-x-1 rounded-xl border p-6">
+      <div className="flex flex-col space-y-5">
+<div className="h-6 w-11/12 rounded-md bg-gray-300 "></div>
+<div className="h-6 w-9/12 rounded-md bg-gray-300 "></div>
+<div className="h-6 w-7/12 rounded-md bg-gray-300 "></div>
+<div className="h-6 w-5/12 rounded-md bg-gray-300 "></div>
+<div className="h-6 w-8/12 rounded-md bg-gray-300 "></div>
+
+</div>
+</div>
 
         }
 );
