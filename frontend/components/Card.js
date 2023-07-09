@@ -1,5 +1,6 @@
 import React from 'react'
 import { ToastContainer, toast } from "react-toastify";
+dynamic(() => import('react-toastify/dist/ReactToastify.min.css'));
 import { useGlobalContext } from '@/context/GlobalContext';
 import dynamic from 'next/dynamic';
 
@@ -34,12 +35,6 @@ draggable
 pauseOnHover
 theme="light"
 />
- {/* <motion.div
- initial={{ opacity: 0 , x: '-15%'}}
- animate={{ x: "0%", opacity: 1 }}
-whileInView={{opacity: 1  }}
-transition={{duration: 0.2}}
- > */}
 
  <div className="bg-white h-24  flex items-center  justify-around lg:p-4 rounded-lg">
 {
@@ -63,7 +58,6 @@ transition={{duration: 0.2}}
 </button>
 
 </div>
-   {/* </motion.div> */}
    
 </div>
   )

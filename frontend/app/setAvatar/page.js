@@ -7,14 +7,14 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 import { useUserContext } from '@/context/UserContext';
-// const useUserContext = dynamic(() => import('@/context/UserContext'));
 const Badge = dynamic(() => import('@mui/material/Badge'));
 const Stack = dynamic(() => import('@mui/material/Stack'));
 const Image = dynamic(() => import('next/image'), {
       ssr: false,
       loading: () => <div className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100 animate-pulse bg-slate-600" />
 });
-dynamic(() => import("react-toastify/dist/ReactToastify.css"));
+dynamic(() => import('react-toastify/dist/ReactToastify.min.css'));
+
 
 
 

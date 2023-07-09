@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
 import { useGlobalContext } from "@/context/GlobalContext";
-dynamic(() => import('react-toastify/dist/ReactToastify.css'));
 // import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 import dynamic from "next/dynamic";
 

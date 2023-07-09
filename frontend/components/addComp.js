@@ -1,7 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { useGlobalContext } from "@/context/GlobalContext";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import dynamic from "next/dynamic";
+dynamic(() => import('react-toastify/dist/ReactToastify.min.css'));
+
 
 function AddComp({ income }) {
   const GlobalContext = useGlobalContext();
@@ -28,7 +31,18 @@ function AddComp({ income }) {
 
   return (
     <form className="bg-gray-100 flex items-center h-[55vh] lg:h-[80vh] w-[85vw] lg:w-[30vw] flex-col mx-auto rounded space-y-6 lg:space-y-10 p-5 inputContainer">
-
+   <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
       <h1 className="font-bold text-base lg:text-xl">
         {income ? "Add Incomes" : "Add Expenses"}
       </h1>
