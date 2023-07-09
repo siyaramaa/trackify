@@ -49,6 +49,7 @@ function Dashboard() {
 
       Cookies.remove('userSession');
       router.push('/auth/signin');
+      router.refresh();
   }
   
   
