@@ -1,9 +1,6 @@
 'use client';
 import Cookies from "js-cookie";
-import React, {useState, useContext, createContext} from "react";
-
-// let JWT_SECRECT_KEY = process.env.NEXT_PUBLIC_JWT_SECRECT_KEY;
-// NEXT_PUBLIC_BASEURL = http://localhost:3001
+import React, {useState, useContext, createContext, useEffect} from "react";
 
 const GlobalContext = createContext();
 const baseURL = process.env.NEXT_PUBLIC_API;
@@ -13,29 +10,6 @@ export const GlobalProvider = ({children}) => {
     const [incomes, setIncomes] = useState([]);
     const [expenses, setExpenses] = useState([]);
     const [monthlyExp, setMonthlyExp] = useState([]);
-    
-
-
-//     useEffect(() => {
-//                 getIncomes();
-//      }, [incomes.length])
-
-//     useEffect(() => {
-//         getExpenses();
-// }, [expenses.length])
-
-
-
-    // const currentUserDetail = async () => {
-                
-    //     const getDetails = await fetch(`${baseURL}/api/userDetails?id=${userId}`, {cache: 'no-store'});
-    //     const data = await getDetails.json();
-    //     return data.userDetail;
-
-    // }
-
-
-
 
     const getIncomes = async () => {
             try {
@@ -65,8 +39,6 @@ export const GlobalProvider = ({children}) => {
             }
             return total;
     }
-    
-
     const addInExp = async (title,type,category,amount,desc) => {
         const isIncome = type == 'income' ? true : false;
         if (title == ""){
@@ -152,29 +124,6 @@ const deleteReq = async (income, item_id) => {
             setMonthlyExp(arr);
         }
     }
-
-    // const mnthIncomes = () => {
-    //     const mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    //     const currMonth = new Date().getMonth();
-    //     const currYear = new Date().getFullYear();
-    //     let arr = [];
-
-    //     incomes.map((i) =>{
-    //         const month = new Date(i.createdAt).getMonth()
-    //         const year = new Date(i.createdAt).getFullYear();
-    //         if(month == currMonth && year == currYear){
-    //             arr.push(i);
-
-    //         };
-    //     });
-    //     return arr;
-
-
-    // }
-
-
-
-
 
 
         return (

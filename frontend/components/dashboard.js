@@ -6,6 +6,7 @@ import React, {useEffect, useState} from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { useUserContext } from "@/context/UserContext";
+import {useGlobalContext} from "@/context/GlobalContext"
 import dynamic from "next/dynamic";
 
 const Link = dynamic(() => import('next/link'));
@@ -42,20 +43,26 @@ const Settings = dynamic(() => import('@mui/icons-material/Settings'),{
 function Dashboard() {
   
     const UserContext = useUserContext();
+    const GlobalContext = useGlobalContext();
     const {currentUserDetail} = UserContext;
+    const {getIncomes,getExpenses, incomes, expenses} = GlobalContext;
+    let totalInc = 0;
+    let totalExp = 0;
     const [currentUser, setCurrentUser] = useState();
-
     useEffect(() => {
-        const fetchReq = async () => {
-          const resp = await currentUserDetail();
-          setCurrentUser(resp[0]);
-        }
-        fetchReq();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      getIncomes();
+      getExpenses();
+      const fetchReq = async () => {
+        const resp = await currentUserDetail();
+        setCurrentUser(resp[0]);
+        
+      }
+      fetchReq();      
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
-    console.log(currentUser);
 
+    incomes?.forEach((i) => totalInc += i.amount );
+    expenses?.forEach((i) => totalExp += i.amount );   
 
   
   const router = useRouter();
@@ -79,8 +86,8 @@ function Dashboard() {
             
         <div className="details text-center hidden xl:block">
           <h1 className="font-semibold text-xl">{currentUser?.username}</h1>
-          <p className="text-gray-500">
-            Balance: <i className="text-slate-900">5000</i>
+          <p className="text-gray-500 text-sm">
+            Balance: <i className={`text-${totalInc-totalExp < 0 ? 'red-500' : 'green-500'}`}>{totalInc-totalExp}</i>
           </p>
         </div>
       </div>
