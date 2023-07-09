@@ -79,8 +79,11 @@ function Dashboard() {
     <div className="flex flex-col p-4 w-[13vw] md:w-28 items-center  xl:w-44 h-screen rounded-r-lg bg-teal-200  z-20 space-y-20 xl:space-y-2 transition-all ease-in-out delay-75 fixed top-0 left-0">
             
       <div className="userInformation space-y-4 xl:p-4 xl:bg-white rounded-xl h-14 w-16 xl:h-48 xl:w-40">
-      
-                 <Image loading="lazy" width={150} height={150} className={`nextImg w-[57px] h-[57px] md:w-[65px] md:h-[65px] xl:w-[85px] xl:h-[85px] mx-auto rounded-full object-cover bg-white`} alt="userIntial" src={currentUser?.profilePicture || '/image/defaultAvatar.png'} />
+
+              {
+                    currentUser?.profilePicture &&
+                <Image width={150} height={150} className={`nextImg w-[57px] h-[57px] md:w-[65px] md:h-[65px] xl:w-[85px] xl:h-[85px] mx-auto rounded-full object-cover bg-white`} alt="userIntial" src={currentUser?.profilePicture.includes('data:image/') ? currentUser?.profilePicture : `/image/${currentUser?.profilePicture}` } />
+              }
         
     
             
