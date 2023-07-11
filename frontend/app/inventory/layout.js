@@ -26,10 +26,10 @@ export default function RootLayout({ children }) {
           <>
           <GlobalProvider>
 
-        <div className='w-20 md:w-32 lg:w-44 h-screen'> 
              <Dashboard />
-            </div>
+            <div className='mx-auto w-full'>
          {children} 
+            </div>
 
           </GlobalProvider>
           </>
