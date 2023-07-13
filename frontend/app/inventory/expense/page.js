@@ -49,13 +49,13 @@ const AddComp = dynamic(() => import('@/components/addComp'), {
 async function page() {  
   return (
         <div className="flex-1 p-2 space-y-2 h-screen">
-          <h1 className="font-bold text-base lg:text-xl text-center xl:text-start">Expenses</h1>
+          <h1 className="font-bold text-sm lg:text-xl text-center xl:text-start">Expenses</h1>
             {/* Using Total Component to display the total amount of expenses. */}
             <Total income={false} />
     
-          <div className="flex w-[86vw] flex-col lg:flex-row md:space-x-7 lg:justify-around h-[100%]">
+          <div className="flex w-full items-center md:items-start flex-col lg:flex-row md:space-x-7 lg:justify-around h-[100%]">
 
-          <div className="formContainer order-2 lg:order-1">
+          <div className="formContainer w-full md:w-fit order-2 lg:order-1">
           {/* Using AddComp to add the Expense */}
           <AddComp />
         </div>

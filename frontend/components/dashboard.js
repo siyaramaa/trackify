@@ -8,11 +8,11 @@ import Cookies from "js-cookie";
 import { useUserContext } from "@/context/UserContext";
 import {useGlobalContext} from "@/context/GlobalContext"
 import dynamic from "next/dynamic";
+import MenuOpenIcon from '@mui/icons-material/MenuOpen'
 
 const Link = dynamic(() => import('next/link'));
 
 const MenuIcon = dynamic(() => import('@mui/icons-material/Menu'));
-const MenuOpenIcon = dynamic(() => import('@mui/icons-material/MenuOpen'));
 
 const Image = dynamic(() => import('next/image'), {
   ssr: false,
@@ -91,14 +91,14 @@ function Dashboard() {
   
   return (
 
-        <div className='w-0 md:w-32 lg:w-44 h-screen'>
-          <div onClick={() => SetShowNav(!showNav)} className={`MenuIcon fixed top-2 left-3 z-50 p-1 ${scrollY > 10 && 'bg-teal-200'} transition-all ease-in delay-75 rounded-lg hover:bg-teal-200 md:hidden`}>
+        <div className='w-0 md:w-52 h-screen'>
+          <div onClick={() => SetShowNav(!showNav)} className={`MenuIcon fixed top-2 right-3 z-50 p-1 ${showNav && 'bg-teal-200'} ${scrollY > 10 && 'bg-teal-200'} transition-all ease-in delay-75 rounded-lg hover:bg-teal-200 md:hidden`}>
             {
               showNav ? <MenuOpenIcon />
                   : <MenuIcon />
               }
           </div>
-    <div className={`${!showNav && 'opacity-0'} md:opacity-100 md:flex flex-col p-4 w-[55vw] md:w-32 items-center  xl:w-44 h-screen rounded-br-full md:rounded-r-2xl bg-teal-200 z-40 space-y-20 xl:space-y-2 transition-all ease-in delay-[50ms] fixed top-0 left-0`}>
+    <div className={`${!showNav && 'opacity-0 pointer-events-none'} md:pointer-events-auto md:opacity-100 md:flex flex-col p-4 w-[55vw] md:w-32 items-center  xl:w-44 h-screen rounded-r-2xl bg-teal-200 z-40 space-y-20 xl:space-y-2 transition-all ease-in delay-[50ms] fixed top-0 left-0`}>
 
 
             
@@ -118,7 +118,7 @@ function Dashboard() {
           </p>
         </div>
       </div>
-      <div className="navLinks flex flex-col items-center space-y-4 p-4 flex-1">
+      <div className="navLinks text-xs md:text-base flex flex-col items-center space-y-4 p-4 flex-1">
         <Link
           href={"/inventory"}
           onClick={() => SetShowNav(false)}
@@ -155,7 +155,7 @@ function Dashboard() {
         
       </div>
 
-      <div className="BottomnavLinks flex flex-col items-center space-y-4 p-4">
+      <div className="BottomnavLinks text-xs md:text-base flex flex-col items-center space-y-4 p-4">
 
       <Link
           href={"/inventory/settings"}

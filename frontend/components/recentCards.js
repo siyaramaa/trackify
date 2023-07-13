@@ -12,11 +12,11 @@ function RecentCard({title, amount, income, currency}) {
     whileInView={{opacity: 1  }}
     transition={{duration: 0.2}}
     >
-    <div className='bg-white h-14 lg:h-16 w-[70vw] lg:w-[25vw] flex items-center justify-between p-4 rounded-lg'>
-                        <span className='text-base md:font-medium md:text-lg'>
+    <div className='bg-white h-12 md:h-14 lg:h-16 w-[85vw] lg:w-[25vw] flex items-center justify-between p-4 rounded-lg'>
+                        <span className='text-sm md:font-medium md:text-lg'>
                                {title}
                         </span>
-                        <p className={`text-xl md:text-2xl text-${income ? 'green-500': 'red-500'}`}>{income ? '+' : '-'}{currency && currency} {amount}</p>
+                        <p className={`text-base md:text-2xl text-${income ? 'green-500': 'red-500'}`}>{income ? '+' : '-'}{currency && currency} {amount}</p>
         </div>
     </motion.div>
       </>

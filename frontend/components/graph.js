@@ -75,9 +75,9 @@ function Graph() {
   return (
     
         
-    <div className='h-[65vh] xl:h-[80vh]  w-full xl:w-[50vw] text-center flex flex-col justify-around'>
+    <div className='h-[65vh] xl:h-[80vh] w-full xl:w-[50vw] text-center flex flex-col justify-around'>
               
-            <div className='flex justify-between md:justify-around items-center h-[10vh] md:h-[20vh]'>
+            <div className='flex space-x-4 md:space-x-0 justify-between md:justify-around items-center h-[10vh] md:h-[20vh]'>
 
                     <InExpCard currency={'NPR'} amount={totalInc} income={true} />
                     <InExpCard currency={'NPR'}  amount={totalExp} income={false} />

@@ -30,7 +30,7 @@ function AddComp({ income }) {
   };
 
   return (
-    <form className="bg-gray-100 flex items-center h-[55vh] lg:h-[80vh] w-[85vw] lg:w-[30vw] flex-col mx-auto rounded space-y-6 lg:space-y-10 p-5 inputContainer">
+    <form className="text-xs md:text-sm bg-gray-100 flex items-center h-[60vh] lg:h-[80vh] w-full md:w-[85vw] lg:w-[30vw] flex-col mx-auto rounded space-y-6 lg:space-y-10 p-5 inputContainer">
    <ToastContainer
 position="top-right"
 autoClose={5000}
@@ -43,7 +43,7 @@ draggable
 pauseOnHover
 theme="light"
 />
-      <h1 className="font-bold text-base lg:text-xl">
+      <h1 className="font-bold text-sm lg:text-xl">
         {income ? "Add Incomes" : "Add Expenses"}
       </h1>
       <input
@@ -51,7 +51,7 @@ theme="light"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder={`Enter ${type} title`}
-        className="p-2 rounded border-none outline-none w-[70vw] sm:w-[60vw] md:w-[50vw] lg:w-[20vw]"
+        className="p-2 rounded  border-none outline-none w-[70vw] sm:w-[60vw] md:w-[50vw] lg:w-[20vw]"
         />
       <input
         type="number"

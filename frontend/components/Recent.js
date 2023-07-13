@@ -25,8 +25,8 @@ const MinMax = dynamic(() => import('./MinMax'),{
 
 function Recent() {
   return (
-    <div className="flex-1 flex flex-col space-y-4 items-center p-5 rounded-md bg-gray-100">
-    <h1 className="font-bold text-xl">Recent History</h1>
+    <div className="flex-1 w-full md:w-fit flex flex-col space-y-4 items-center p-5 rounded-md bg-gray-100">
+    <h1 className="font-bold  text-sm md:text-xl">Recent History</h1>
         <div className='cardsContainer space-y-9'>
         <RecentCard title={"Got Salary"} amount={'5000'} income currency />
         <RecentCard title={"Loss on sale"} amount={'5000'} income={false} currency/>

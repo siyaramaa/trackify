@@ -36,20 +36,20 @@ pauseOnHover
 theme="light"
 />
 
- <div className="bg-white h-24  flex items-center  justify-around lg:p-4 rounded-lg">
+ <div className="bg-white h-20 md:h-24 flex items-center  justify-around lg:p-4 rounded-lg">
 {
-    income ? <CurrencyRupeeIcon  className="hidden lg:block" fontSize="large" /> : <MoneyOffIcon  className="hidden lg:block" fontSize="large" />
+    income ? <CurrencyRupeeIcon  className="hidden lg:block" fontSize="medium" /> : <MoneyOffIcon  className="hidden lg:block" fontSize="medium" />
 }
 
 
-<div className="details  p-2 font-bold text-sm lg:font-medium lg:text-lg">
+<div className="details text-xs md:text-sm lg:text-base p-2 font-bold lg:font-medium">
 
 <h1>{title.length >= 10 ? title.slice(0,10)+'...' : title}</h1>
-<h1 className={`text-base text-${!income ? 'red-500' : 'green-500'}`}>{`${income ? '+':'-'}NPR ${amount}`}</h1>
+<h1 className={` text-${!income ? 'red-500' : 'green-500'}`}>{`${income ? '+':'-'}NPR ${amount}`}</h1>
 </div>
-<div className="details  p-2">
-<h1 className="text-sm text-gray-500">{category}</h1>
-<h1 className="font-medium text-sm text-gray-400">{createdAt.slice(0,10)}</h1>
+<div className="details text-xs md:text-sm p-2">
+<h1 className=" text-gray-500">{category}</h1>
+<h1 className="font-medium text-gray-400">{createdAt.slice(0,10)}</h1>
 </div>
 
 <button onClick={() => delHandler(id)} className="hover:text-red-500  group h-full p-2" >
