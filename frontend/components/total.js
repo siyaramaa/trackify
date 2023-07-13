@@ -12,7 +12,7 @@ function Total({income}) {
 
   return (
     <div className="bg-gray-100 h-16 w-full flex items-center justify-center p-4 rounded-lg sticky top-0 z-10">
-    <span className="font-bold text-base md:text-xl">
+    <span className="font-bold text-sm md:text-xl">
       {income ? 'Total Income' : 'Total Expenses'}: 
       <span className={`font-normal rounded-lg text-${income ? 'green': 'red'}-500`}> {totalAmount}</span>
     </span>

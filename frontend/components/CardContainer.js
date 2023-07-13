@@ -33,7 +33,7 @@ function CardContainer({income}) {
 
       
   return (
-    <div className="cardsContainer order-1 lg:order-2  w-[85vw] md:w-[80vw] lg:w-[50vw] border bg-gray-100 rounded p-5 space-y-5 h-[45vh] lg:h-[80vh] overflow-y-scroll overflow-x-hidden">    
+    <div className="cardsContainer order-1 lg:order-2 w-full md:w-[80vw] lg:w-[50vw] bg-gray-100 rounded p-1 md:p-5 space-y-5 h-[45vh] lg:h-[80vh] overflow-y-scroll overflow-x-hidden">    
       { 
         
         // Condition 1: Checking for income page and rendering incomes only if there are some incomes data in the database.
