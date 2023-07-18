@@ -15,7 +15,7 @@ export default function Home() {
       <h1 className="font-bold text-base md:text-lg">Dashboard</h1>
       {/* Greeting the user */}
       <UserGreet />
-      <div className="w-full flex items-center flex-col xl:flex-row justify-between space-x-2">
+      <div className="w-full flex items-center flex-col space-y-3 xl:flex-row justify-between space-x-2">
       {/* Graph and Recent components */}
       <Graph />  {/* It includes Graph of Expenses */}
       <Recent /> {/* It includes recently added incomes and expenses */}

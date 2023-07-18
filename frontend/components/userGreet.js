@@ -15,10 +15,9 @@ function UserGreet() {
 
   return (
 <>
-              {
-                currentUser && 
-                  <p className="text-xs md:text-base text-gray-500">Ram Ram, {currentUser?.username} !</p>
-              }
+            
+      <p className="text-xs md:text-base text-gray-500">Ram Ram, {currentUser?.username ? currentUser.username : '....'} !</p>
+              
         
         </>
    
