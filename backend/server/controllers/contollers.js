@@ -44,7 +44,6 @@ const selectAvatar = async (req, res) => {
 //Creating function to login user
 const loginUser  = async (req, res) => {
     const {email,password} = req.body;
-    const defaultAvatar = "http://localhost:3000/_next/image?url=%2Fimage%2FdefaultAvatar.png&w=384&q=75";
     const isAvailable = await users.find({email: email, password: password});
     if(isAvailable.length == 0) return res.status(404).json({'error': 'Email or Password does not match'});
     const userId = isAvailable[0]._id.toString();
@@ -53,7 +52,7 @@ const loginUser  = async (req, res) => {
             id: userId
     }, process.env.JWT_SECRECT_KEY);
 
-    token && res.status(200).json({'token': token, 'avatarSelected': isAvailable[0].profilePicture === defaultAvatar || ""  ? false : true});
+    token && res.status(200).json({'token': token, 'avatarSelected': isAvailable[0].profilePicture === ""  ? false : true});
 }
 
 

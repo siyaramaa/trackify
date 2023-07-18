@@ -39,7 +39,7 @@ function Sigin() {
     });
     if(loginReq?.error) return toast.error(loginReq?.error);
     //Checking if user has selected his profile avatar (if yes sending him to the home page else redirecting to the avatar selection page).
-    loginReq.avatarSelected == false ? router.push('/setAvatar') : router.push('/inventory');
+    loginReq.avatarSelected === false ? router.push('/setAvatar') : router.push('/inventory');
     toast.success('Sucessfully logged in.');
 }
 

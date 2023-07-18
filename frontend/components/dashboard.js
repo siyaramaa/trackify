@@ -105,8 +105,10 @@ function Dashboard() {
       <div className="userInformation space-y-4 mx-auto xl:p-4 xl:bg-white rounded-xl h-14 w-16 xl:h-48 xl:w-40 xl:mx-0">
 
               {
-                    currentUser?.profilePicture &&
+                    currentUser?.profilePicture != '' ?
                 <Image width={150} height={150} className={`nextImg w-[57px] h-[57px] md:w-[65px] md:h-[65px] xl:w-[85px] xl:h-[85px] mx-auto rounded-full object-cover bg-white`} alt="userIntial" src={currentUser?.profilePicture.includes('data:image/') ? currentUser?.profilePicture : `/image/${currentUser?.profilePicture}` } />
+                : <Image width={150} height={150} className={`nextImg w-[57px] h-[57px] md:w-[65px] md:h-[65px] xl:w-[85px] xl:h-[85px] mx-auto rounded-full object-cover bg-white`} alt="userIntial" src={`/image/defaultAvatar.png`} />
+
               }
         
     
