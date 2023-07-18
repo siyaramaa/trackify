@@ -43,7 +43,6 @@ export const UserProvider = ({children}) => {
     }
 
     const uploadAvatar = async (img) => {
-                        //Have to fix this...
         const uploadReq = await fetch(`${baseURL}/api/selectAvatar`, {
                     method: 'POST',
                     headers: {
