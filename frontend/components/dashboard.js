@@ -98,18 +98,18 @@ function Dashboard() {
                   : <MenuIcon />
               }
           </div>
-    <div className={`${!showNav && 'opacity-0 pointer-events-none'} md:pointer-events-auto md:opacity-100 md:flex flex-col p-4 w-[55vw] md:w-32 items-center  xl:w-44 h-screen rounded-r-2xl bg-teal-200 z-40 space-y-20 xl:space-y-2 transition-all ease-in delay-[50ms] fixed top-0 left-0`}>
+    <div className={`${!showNav && 'opacity-0 pointer-events-none'} md:pointer-events-auto md:opacity-100 md:flex flex-col p-4 w-[55vw] md:w-32 items-center  lg:w-44 h-screen rounded-r-2xl bg-teal-200 z-40 space-y-20 xl:space-y-2 transition-all ease-in delay-[50ms] fixed top-0 left-0`}>
 
 
             
       <div className="userInformation space-y-4 mx-auto xl:p-4 xl:bg-white rounded-xl h-14 w-16 xl:h-48 xl:w-40 xl:mx-0">
 
               {
-                    currentUser?.profilePicture != '' ?
-                <Image width={150} height={150} className={`nextImg w-[57px] h-[57px] md:w-[65px] md:h-[65px] xl:w-[85px] xl:h-[85px] mx-auto rounded-full object-cover bg-white`} alt="userIntial" src={currentUser?.profilePicture.includes('data:image/') ? currentUser?.profilePicture : `/image/${currentUser?.profilePicture}` } />
-                : <Image width={150} height={150} className={`nextImg w-[57px] h-[57px] md:w-[65px] md:h-[65px] xl:w-[85px] xl:h-[85px] mx-auto rounded-full object-cover bg-white`} alt="userIntial" src={`/image/defaultAvatar.png`} />
-
+                    currentUser?.profilePicture && 
+                    <Image width={150} height={150} className={`nextImg w-[57px] h-[57px] md:w-[65px] md:h-[65px] xl:w-[85px] xl:h-[85px] mx-auto rounded-full object-cover bg-white`} alt="userIntial" src={currentUser?.profilePicture.includes('data:image/') ? currentUser?.profilePicture : currentUser?.profilePicture === '' ? '/image/defaultAvatar.png' : `/image/${currentUser?.profilePicture}` } />
               }
+
+              
         
     
             

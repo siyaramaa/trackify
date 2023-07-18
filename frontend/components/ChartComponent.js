@@ -1,48 +1,20 @@
 import React from 'react'
-import {Chart as ChartJs,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement
-} from 'chart.js'
-import {Line} from 'react-chartjs-2'
+import { Chart } from 'react-google-charts';
 
-ChartJs.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement,
-)
 
 function ChartComponent({data}) {
-
-   const options = {
-    type: 'line',
-    redraw: true,
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Monthly Expense Graph',
-        },
-        legend: {
-          position: 'top',
-        }
-      },
-    };
-
+ const options = {
+    title: "Monthly Expenses",
+    chartArea: { width: "80%", height: "70%" },
+  };
   return (
-
-
-  <Line className='w-full mx-auto'  options={options} data={data} />
+    <Chart
+    chartType="AreaChart"
+    width="100%"
+    height="300px"
+    data={data}
+    options={options}
+  />
           );
 }
 

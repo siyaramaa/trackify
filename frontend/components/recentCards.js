@@ -12,7 +12,7 @@ function RecentCard({title, amount, income, currency}) {
     whileInView={{opacity: 1  }}
     transition={{duration: 0.2}}
     >
-    <div className='bg-white h-12 md:h-14 lg:h-16 w-[85vw] lg:w-[25vw] flex items-center justify-between p-4 rounded-lg'>
+    <div className='bg-white h-12 md:h-14 lg:h-16 w-[85vw] md:w-[70vw] lg:w-[50vw] xl:w-[25vw] flex items-center justify-between p-4 rounded-lg'>
                         <span className='text-sm md:font-medium md:text-lg'>
                                {title}
                         </span>
