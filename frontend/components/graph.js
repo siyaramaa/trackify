@@ -54,10 +54,6 @@ function Graph() {
       // eslint-disable-next-line react-hooks/exhaustive-deps
 
   }, [expenses.length])
-  let arrayOfData = [
-    ["Name", "Amount"],
-      ];
-        monthlyExp.forEach((item) => arrayOfData.push([item.title,item.amount]));
 
        
   return (
@@ -74,7 +70,7 @@ function Graph() {
               
               {/* Chart JS Implementation */}
             <div className='graphContainer lg:order-1 text-xs md:text-sm h-fit w-full rounded-md bg-slate-50'>
-                    <ChartComponent  data={arrayOfData} />
+                    <ChartComponent  data={monthlyExp} />
             </div>
 
         

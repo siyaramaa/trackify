@@ -1,5 +1,7 @@
+'use client';
 import React from 'react'
 import dynamic from 'next/dynamic'
+import { useGlobalContext } from '@/context/GlobalContext';
 const RecentCard = dynamic(() => import('./recentCards'),{
         ssr: false,
         loading: () => 
@@ -24,15 +26,23 @@ const MinMax = dynamic(() => import('./MinMax'),{
 
 
 function Recent() {
+  const GlobalContext = useGlobalContext();
+  const {transactionHistory, incomes, expenses} = GlobalContext;
+  const history =  transactionHistory();
+ 
+ 
   return (
     <div className="flex-1 w-full md:w-fit flex flex-col space-y-4 items-center p-5 rounded-md bg-gray-100">
     <h1 className="font-bold  text-sm md:text-xl">Recent History</h1>
         <div className='cardsContainer space-y-9'>
-        <RecentCard title={"Got Salary"} amount={'5000'} income currency />
-        <RecentCard title={"Loss on sale"} amount={'5000'} income={false} currency/>
-        <RecentCard title={"Food"} amount={'5000'} income={false} currency />
+          {   
+              history.map((item) => (
+                <RecentCard key={item._id} title={`${item.title.length > 11 ? item.title.slice(0,12) + '...' : item.title}`} amount={item?.amount} income={item?.type === 'expense' ? false : true} currency />
+                
+              ))
+          }
         </div>
-      <MinMax />
+      <MinMax incomes={incomes} expenses={expenses} />
     </div>
   )
 }

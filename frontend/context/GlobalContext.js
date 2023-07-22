@@ -125,9 +125,15 @@ const deleteReq = async (income, item_id) => {
         }
     }
 
+    const transactionHistory = () => {
+        const transactions = [...incomes,...expenses];
+        transactions.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+        return transactions.slice(0,3);
+    }
+
 
         return (
-            <GlobalContext.Provider value={{deleteReq, userId,getExpenses, getIncomes, addInExp, incomes, expenses, mnthExpenses, totalIexp, monthlyExp}}>
+            <GlobalContext.Provider value={{deleteReq, transactionHistory, userId,getExpenses, getIncomes, addInExp, incomes, expenses, mnthExpenses, totalIexp, monthlyExp}}>
 
                 {children}
             </GlobalContext.Provider>
