@@ -38,7 +38,7 @@ function CardContainer({income}) {
         
         // Condition 1: Checking for income page and rendering incomes only if there are some incomes data in the database.
                     income && incomes.length > 0 ? (
-                      incomes?.map((i) => 
+                      incomes?.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt)).map((i) => 
                               (
                           <Card key={i._id} income={income} id={i._id} title={i.title} amount={i.amount} category={i.category} createdAt={i.createdAt} />
                       )            
@@ -52,7 +52,7 @@ function CardContainer({income}) {
                       ) : 
                     //Condition 3: Checking for expense page and rendering expenses only if there are some expense data stored in the database.
                     income == false && expenses.length > 0 ? (
-                      expenses?.map((i) => 
+                      expenses?.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt)).map((i) => 
                        
                               (
                                 <Card key={i._id} income={income} id={i._id} title={i.title} amount={i.amount} category={i.category} createdAt={i.createdAt} />

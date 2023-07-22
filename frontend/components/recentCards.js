@@ -16,7 +16,7 @@ function RecentCard({title, amount, income, currency}) {
                         <span className='text-sm md:font-medium md:text-lg'>
                                {title}
                         </span>
-                        <p className={`text-base md:text-2xl text-${income ? 'green-500': 'red-500'}`}>{income ? '+' : '-'}{currency && currency} {amount}</p>
+                        <p className={`text-base md:text-lg text-${income ? 'green-500': 'red-500'}`}>{income ? '+' : '-'}{currency && currency} {amount}</p>
         </div>
     </motion.div>
       </>
