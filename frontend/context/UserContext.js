@@ -57,7 +57,7 @@ export const UserProvider = ({children}) => {
 
  const currentUserDetail = async () => {
             if(userId){
-                const getDetails = await fetch(`${baseURL}/api/userDetails?id=${userId}`, {cache: 'no-store'});
+                const getDetails = await fetch(`${baseURL}/api/userDetails?id=${userId}`, {cache: 'no-store' });
                 const data = await getDetails.json();
                 return data.userDetail;
             }else{

@@ -2,7 +2,6 @@
 //Importing specifically without destructuring frees some space in dev mode.
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
