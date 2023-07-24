@@ -8,7 +8,7 @@ const Image = dynamic(() => import('next/image'), {
   ssr: false,
   loading: () => <div className="rounded-full  w-[85px] h-[85px] cursor-pointer hover:opacity-50 ease-in mx-auto animation-all duration-100 animate-pulse bg-slate-400" />
 });
-function page() {
+function Settings() {
 
   const UserContext = useUserContext();
 
@@ -74,4 +74,4 @@ useEffect(() => {
   )
 }
 
-export default page;
+export default Settings;
