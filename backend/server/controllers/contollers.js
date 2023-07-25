@@ -25,6 +25,27 @@ const createUser  = async (req, res) => {
     }
 }
 
+//function to delete account of a user with account's id.
+const delUser = async (req,res) => {
+        const userId = req.query.id;
+    
+    try {
+        //Deleting user's account.
+        const accDelReq = await users.findByIdAndDelete({_id: userId});
+        //Deleting user's income and expense data.
+        const incDelReq = await incomes.deleteMany({createdBy: userId});
+        const expDelReq = await expenses.deleteMany({createdBy: userId});
+        if(accDelReq.deletedCount != 0){
+            return res.status(200).json({'success': 'Succesfully deleted your account.'});
+           }
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({'error': "Sorry, Your account couldn't be deleted at the moment."});
+
+    }
+
+}
+
 //Creating a function to upload profile picture
 const selectAvatar = async (req, res) => {
 
@@ -206,4 +227,4 @@ const delExpense = async (req,res) => {
 
 
 //Exporting methods or functions to use in routes
-module.exports = {getUserById, selectAvatar, getAllExps, getExpenses, createUser, getAllIncomes, getIncomes, getAllUsers, addExpense, addIncome, delIncome, delExpense, loginUser};
+module.exports = {getUserById,delUser, selectAvatar, getAllExps, getExpenses, createUser, getAllIncomes, getIncomes, getAllUsers, addExpense, addIncome, delIncome, delExpense, loginUser};

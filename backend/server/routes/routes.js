@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 //Importing controllers for the routes (Methods)
-const {delIncome, delExpense, getAllExps, getExpenses,loginUser, createUser, getAllUsers, getAllIncomes, getIncomes, addIncome, addExpense, getUserById, selectAvatar } = require('../controllers/contollers');
+const {delIncome,delUser, delExpense, getAllExps, getExpenses,loginUser, createUser, getAllUsers, getAllIncomes, getIncomes, addIncome, addExpense, getUserById, selectAvatar } = require('../controllers/contollers');
 
 
 
@@ -15,6 +15,9 @@ router.get('/', (req,res) => {
 
 //Route to create a users account
 router.post('/api/createUser', createUser);
+
+//Route to delete a user's account with account id.
+router.delete('/api/user/delete?:id', delUser);
 
 //Route to upload a profile picture
 router.post('/api/selectAvatar', selectAvatar);
