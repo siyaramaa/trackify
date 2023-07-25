@@ -21,6 +21,10 @@ export function middleware(req) {
         if (req.nextUrl.pathname.startsWith('/inventory')) {
           return NextResponse.redirect(`${baseURL}/auth/signin`);
         }
+        if (req.nextUrl.pathname.startsWith('/setAvatar')) {
+          return NextResponse.redirect(`${baseURL}/auth/signin`);
+        }
+       
       }
       
 
