@@ -10,6 +10,10 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" className='font-mono'>
+      <head>
+        <title>Trackify</title>
+        <link rel="icon" href="/image/logo.avif" type="image/avif" sizes="32x32" />
+      </head>
       <UserProvider>
         <body className='flex h-screen container'>
          {children} 

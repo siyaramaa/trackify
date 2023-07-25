@@ -7,6 +7,13 @@ const UserGreet = dynamic(() => import('@/components/userGreet'), {
       loading: () =>  <div className="animate-pulse h-4 w-2/12 rounded-md bg-gray-300 "></div>
 
 });
+
+export const metadata = {
+  title: 'Dashboard',
+  description: 'See your details and navigate to different pages.',
+}
+ 
+
 //Index page of /inventory or home page.
 export default function Home() {
 

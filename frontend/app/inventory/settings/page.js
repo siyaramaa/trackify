@@ -2,17 +2,25 @@
 import { useUserContext } from '@/context/UserContext';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import React,{useState, useEffect, useMemo} from 'react'
+import { useRouter } from 'next/navigation';
+import { ToastContainer, toast } from "react-toastify";
+
+import React,{useState, useEffect} from 'react'
+
+dynamic(() => import('react-toastify/dist/ReactToastify.min.css'));
 
 const Image = dynamic(() => import('next/image'), {
   ssr: false,
   loading: () => <div className="rounded-full  w-[85px] h-[85px] cursor-pointer hover:opacity-50 ease-in mx-auto animation-all duration-100 animate-pulse bg-slate-400" />
 });
+
+
 function Settings() {
+  const router = useRouter()
 
   const UserContext = useUserContext();
 
-  const {currentUserDetail} =  UserContext;
+  const {currentUserDetail, deleteUser} =  UserContext;
 
 const [user, setUser] = useState({
           username: '',
@@ -33,10 +41,26 @@ useEffect(() => {
 }, [])
 
 
+const delReqHandler = async () => {
+      const userApproval = confirm(`Hey ${user.username}, By deleting your account you will also lose your data, Are you sure you want to delete your account?`);
+      if(!userApproval) return;
+
+      const delReq = await deleteUser();
+      if(delReq.Error) return toast.error(delReq.Error);
+    
+      toast.success(delReq.success);
+      router.refresh();
+    }
+
+
+
+
   
 
   
   return (
+    <>
+    <ToastContainer />
     <div className="flex  h-full flex-1 items-center justify-center bg-white">
                 <div className='h-[85vh] w-[96vw] sm:w-[70vw] lg:w-[65vw]  flex items-center flex-col border bg-gradient-to-r from-slate-300 to-red-100 rounded-xl text-center p-4 space-y-2'>
                         <Image loading="lazy" width={150} height={150} className={`nextImg w-[85px] h-[85px] mx-auto rounded-full object-cover bg-white`} alt="userIntial"  src={user?.profilePicture.includes('data:image/') ? user?.profilePicture : user?.profilePicture === '' ? '/image/defaultAvatar.png' : `/image/${user?.profilePicture}` } />
@@ -65,13 +89,14 @@ useEffect(() => {
                                 </div>
                         </div>
                          <div className='flex  w-full justify-around p-2 text-xs'>
-                            <button onClick={() => alert(`hey ${user?.username}, Account deletion is not allowed currently.`)} className="p-3 bg-red-300  rounded-md hover:bg-red-400 transition-all ease-in-out w-24 sm:w-32">Delete</button>
+                            <button onClick={() => delReqHandler()} className="p-3 bg-red-300  rounded-md hover:bg-red-400 transition-all ease-in-out w-24 sm:w-32">Delete</button>
                             <Link href={'/setAvatar'} className="p-3 bg-cyan-300 rounded-md hover:bg-cyan-400 transition-all ease-in-out w-24 sm:w-32">Change avatar</Link>
                           </div>
                 </div>
         
     </div>
+    </>
   )
-}
+  }
 
 export default Settings;

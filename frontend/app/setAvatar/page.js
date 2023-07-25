@@ -4,10 +4,8 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-
-
-
 import { useUserContext } from '@/context/UserContext';
+import Link from "next/link";
 const Badge = dynamic(() => import('@mui/material/Badge'));
 const Stack = dynamic(() => import('@mui/material/Stack'));
 const Image = dynamic(() => import('next/image'), {
@@ -79,6 +77,7 @@ function SetAvatar() {
     <>
     <ToastContainer />
       <div className="flex  h-full flex-1 flex-col justify-evenly bg-slate-900 text-white">
+
         {/* Displaying the selected Avatar */}
         <div className="choosedAvatar sm:mx-auto sm:w-full sm:max-w-sm text-center">
         <input className="selector hidden" type="file" onChange={userInputHandler} />
@@ -106,16 +105,21 @@ function SetAvatar() {
                 <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.alt)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="stylish_boy.avif" src="/image/stylish_boy.avif" />
                 <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.alt)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="Yellow_jacket_boy.avif" src="/image/Yellow_jacket_boy.avif" />
                <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.alt)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="Yellow_jacket_girl.avif" src="/image/Yellow_jacket_girl.avif" />
-               <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.alt)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="sitarama.avif"  src={'/image/sitarama.avif'} />             
              </Stack>
              <Stack direction="row" spacing={2} className="flex items-center justify-center">
+               <Image loading="lazy" width={150} height={150} onClick={(e) => setAvatar(e.target.alt)} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="sitarama.avif"  src={'/image/sitarama.avif'} />             
              <Image loading="lazy" onClick={(e) => setAvatar(e.target.alt)} width={150} height={150} className="w-[75px] h-[75px] rounded-full cursor-pointer hover:opacity-50 ease-in animation-all duration-100" alt="krishna.avif" src="/image/krishna.avif" />
              <Image onClick={(e) => setAvatar(e.target.alt)} loading="lazy" width={150} height={150} className="rounded-full w-[75px] h-[75px] cursor-pointer hover:opacity-50 ease-in animation-all duration-100 bg-white" alt="defaultAvatar.png" src='/image/defaultAvatar.png' />
               
               </Stack>
         </div>
-        
-        <button onClick={submitHandler} className="p-3 mx-auto w-[45vw] sm:w-[35vw] md:w-[17vw] rounded bg-slate-600 hover:bg-slate-500 transition-all ease-in">Done</button>
+                  
+        <div className='flex  mx-auto flex-col sm:flex-row sm:space-y-0 sm:w-[85vw] md:w-[45vw] md:justify-around sm:justify-between space-y-2 w-full justify-around text-xs'>
+
+        <Link href={'/inventory'} className="p-3 text-center mx-auto w-[45vw] sm:w-[35vw] md:w-[10vw] rounded bg-blue-400 hover:bg-blue-500 transition-all ease-in">Cancel</Link>
+        <button onClick={submitHandler} className="p-3 mx-auto w-[45vw] sm:w-[35vw] md:w-[10vw] rounded bg-red-500 hover:bg-red-600 transition-all ease-in">Done</button>
+          </div>
+
       </div>
     </>
   );
