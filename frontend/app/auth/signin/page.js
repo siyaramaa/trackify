@@ -57,7 +57,7 @@ function Sigin() {
         width={190}
         height={50}
         loading='lazy'
-        src="https://img.freepik.com/premium-vector/krishna-janmashtami-hindi-calligraphy-greeting-design_579179-2035.jpg?w=2000"
+        src={`/image/logo.avif`}
         alt="Your Company"
       />
       <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

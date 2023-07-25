@@ -67,9 +67,26 @@ export const UserProvider = ({children}) => {
                 
     }
 
+const deleteUser = async () => {
+        if(userId){
+                const delReq = await fetch(`${baseURL}/api/user/delete?id=${userId}`, {
+                                method: 'DELETE',
+                                headers: {
+                                        'Content-type': 'application/json'
+                                }            
+                })
+                const resFromServer = await delReq.json();
+                if(!resFromServer.success) return {'Error': 'Your account was not deleted, Please try again.'};
+                Cookies.remove('userSession');
+                return {'success': 'You account was sucessfulyy deleted.'}; 
+        }else{
+                return {'Error': 'You cannot access this function.'}
+        }
+}
+
 
         return (
-            <UserContext.Provider value={{currentUserDetail, userId,registerUser,loginUser, uploadAvatar}}>
+            <UserContext.Provider value={{currentUserDetail,deleteUser, userId,registerUser,loginUser, uploadAvatar}}>
 
                 {children}
             </UserContext.Provider>

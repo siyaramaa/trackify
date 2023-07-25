@@ -2,6 +2,11 @@ import dynamic from 'next/dynamic';
 import React from 'react';
 
 
+export const metadata = {
+        title: 'Expenses',
+        description: 'See your expenses details.'
+}
+
 const Total = dynamic(() => import('@/components/total'),{
   ssr: false,
   loading: () => <div className="bg-slate-100 h-16 w-full animate-pulse flex-row items-center justify-center space-x-1 rounded-xl border p-6">
@@ -42,6 +47,7 @@ const AddComp = dynamic(() => import('@/components/addComp'), {
         </div>
 
 })
+
 
 
 
